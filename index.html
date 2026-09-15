@@ -1,0 +1,432 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>В разработке</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: 'Inter', sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.35), transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3), transparent 35%),
+                linear-gradient(135deg, #070b17, #111827 50%, #0b1020);
+        }
+
+        /* Фоновые круги */
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .orb.one {
+            width: 300px;
+            height: 300px;
+            background: #6366f1;
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb.two {
+            width: 350px;
+            height: 350px;
+            background: #a855f7;
+            right: -120px;
+            bottom: -120px;
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -25px) scale(1.08);
+            }
+        }
+
+        /* Частицы */
+
+        .particles span {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+            animation: particle 6s linear infinite;
+        }
+
+        .particles span:nth-child(1) {
+            left: 10%;
+            top: 80%;
+            animation-delay: 0s;
+        }
+
+        .particles span:nth-child(2) {
+            left: 25%;
+            top: 20%;
+            animation-delay: 1s;
+        }
+
+        .particles span:nth-child(3) {
+            left: 70%;
+            top: 30%;
+            animation-delay: 2s;
+        }
+
+        .particles span:nth-child(4) {
+            left: 85%;
+            top: 70%;
+            animation-delay: 3s;
+        }
+
+        .particles span:nth-child(5) {
+            left: 50%;
+            top: 90%;
+            animation-delay: 4s;
+        }
+
+        @keyframes particle {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-180px);
+                opacity: 0;
+            }
+        }
+
+        /* Карточка */
+
+        .card {
+            position: relative;
+            z-index: 10;
+
+            width: min(90%, 650px);
+            padding: 70px 50px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 32px;
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+
+            animation: cardAppear 1s ease-out;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Логотип */
+
+        .logo {
+            position: relative;
+
+            width: 100px;
+            height: 100px;
+
+            margin: 0 auto 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 28px;
+
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+
+            box-shadow:
+                0 15px 40px rgba(99, 102, 241, 0.4);
+
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+
+            border-radius: 35px;
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        .logo-icon {
+            font-size: 48px;
+            animation: rotate 5s linear infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Заголовок */
+
+        h1 {
+            font-size: clamp(42px, 8vw, 72px);
+            font-weight: 800;
+            letter-spacing: -3px;
+            line-height: 1.05;
+
+            margin-bottom: 20px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #c4b5fd,
+                #ffffff
+            );
+
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        p {
+            color: #aeb7ca;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        /* Индикатор */
+
+        .status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            margin-top: 35px;
+
+            color: #dbeafe;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+            background: #4ade80;
+
+            box-shadow: 0 0 15px #4ade80;
+
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+
+        /* Полоса прогресса */
+
+        .progress {
+            width: 100%;
+            height: 5px;
+
+            margin-top: 35px;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .progress-bar {
+            width: 40%;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: linear-gradient(
+                90deg,
+                #6366f1,
+                #a855f7,
+                #ec4899
+            );
+
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(350%);
+            }
+        }
+
+        /* Мобильная версия */
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 55px 25px;
+                border-radius: 25px;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+                border-radius: 23px;
+            }
+
+            .logo-icon {
+                font-size: 38px;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Фон -->
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+
+    <!-- Частицы -->
+    <div class="particles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Основная карточка -->
+    <main class="card">
+
+        <!-- Логотип -->
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+        </div>
+
+        <h1>В разработке</h1>
+
+        <p>
+            Мы создаём что-то новое и особенное.
+            Совсем скоро здесь появится наш новый сайт.
+        </p>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Работа над проектом идёт
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+
+    </main>
+
+</body>
+</html>
+```
